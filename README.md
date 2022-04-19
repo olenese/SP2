@@ -1,4 +1,4 @@
 # SP2
-Studentproject SP2
+Student Project 2 (SP2)
 
-Updates and contributing in apps
+A password manager built in python with storage to an external SQL server. 
