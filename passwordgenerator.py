@@ -3,8 +3,8 @@ import string
 import os
 import sys
 
-characters = list(string.ascii_letters + string.digits + "!@$%&#/\?^*()")
-special_characters = list("!@$%&#")
+characters = list(string.ascii_letters + string.digits + "!@$%&#/\?*()")
+special_characters = list("!@$%&#/\?*()")
 
 def passwordgenerator():
     word_length = int(input("Enter password lenght: "))
@@ -39,19 +39,15 @@ def passphrase_generator():
     random.shuffle(special_characters)
 
     all_passwords = []
-    with open("rockyou.txt", "r") as file:
-        for line in file:
-            all_passwords.append(line.strip("\n"))
-        # all_passwords = file.readlines()
-    
-#    for i in range(5):
-#        print(all_passwords[i])
-
-#    for i in range(phrase_length):
-#        with open("rockyou.txt", "r") as file:
-#            allText = file.read()
-#            words = list(map(str, allText.split()))
-#        passphrase.append(random.choice(words))
+    if input("Do you want a Norwegian passphrase press y, for English press any other letter: ") == "y":    
+        with open("wordlistNOB.txt", "r") as file:
+            for line in file:
+                all_passwords.append(line.strip("\n"))
+    else:
+        with open("wordlistEN.txt", "r") as file:
+            for line in file:
+                all_passwords.append(line.strip("\n"))
+        
 
     for i in range(phrase_length):
         passphrase.append(random.choice(all_passwords))
