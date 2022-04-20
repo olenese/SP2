@@ -1,6 +1,6 @@
 
-def mainpart():
-    print("Hello World")
+def mainpart(test):
+    print(test)
 
 if "__name__" == "__main__":
-    mainpart()
+    mainpart("hello world")
