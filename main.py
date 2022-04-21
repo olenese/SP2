@@ -1,10 +1,16 @@
+import bcrypt
 
-def mainpart(test):
-    print(test)
 
-print("tullebukk")
-print("Testing")
+def passwordhashing(password, passwordtest):
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(password.encode('utf-8'), salt)
+    print(salt)
+    print(hashed)
+
+    if bcrypt.checkpw(passwordtest.encode('utf-8'), hashed):
+        print("It Matches")
+    else:
+        print("It Does not Match")
+
 if __name__ == "__main__":
-    mainpart(test="Hello world")
-
-
+    passwordhashing("password", input("Enter Password: "))
