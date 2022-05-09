@@ -19,12 +19,14 @@
 
             <div class="field">
                 <div class="control">
-                    <input class="input is-large" type="password" name="password" placeholder="Password">
+                    <input class="input is-large" type="password" name="password" minlength="16" placeholder="Password" required>
                 </div>
             </div>
 
-            <button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
+            <button class="button is-block is-info is-large is-fullwidth" name="submit">Sign Up</button>
         </form>
     </div>
 </div>
+
+
 {% endblock %}

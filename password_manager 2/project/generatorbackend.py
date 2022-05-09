@@ -5,41 +5,48 @@ import sys
 
 characters = list(string.ascii_letters + string.digits + "!@$%&#/\?*()")
 special_characters = list("!@$%&#/\?*()")
+special_characters_with_whitespace = list("!@$%&#/\?*() ")
 
-def passwordgenerator():
-    word_length = int(input("Enter password lenght: "))
-    if word_length <= 8:
-        print("Not secure password, the minimum wordlength should be 8 characters!!!")
-        word_length = int(input("Enter password lenght: "))
-
+def randomcharacter(length):
     random.shuffle(characters)
-
     password = []
-    for i in range(word_length):
+    for i in range(length):
         password.append(random.choice(characters))
-
     random.shuffle(password)
+    result = [ ]
+    for x in password:
+        case = random.randint(0,1)
+        if case == 0:
+            result += x.upper()
+        else:
+            result += x.lower()
+    return "".join(result)
 
-    print("".join(password))
 
-    ready_password = "".join(password)
+def passphraseNO(length):
+    passphrase = []
+    while len(passphrase) != length:    
+        with open("wordlistNOB.txt", "r") as file:
+            for line in file:
+                passphrase.append(line.strip("\n"))
+                
 
-    with open("Passwords.txt", "a") as f:
-        location = input("Where are you using this password?: ")
-        # print(location," : ", ready_password,  file=f)
-        f.write(location + " : " + ready_password)
-    
-    print("Password has been vaulted!")
+
+
+
+
+
+
 
 def passphrase_generator():
     passphrase = []
 
     phrase_length = int(input("Please enter the amount of words in the passtext: "))
 
-    random.shuffle(special_characters)
+    random.shuffle(special_characters_with_whitespace)
 
     all_passwords = []
-    if input("Do you want a Norwegian passphrase press y, for English press any other letter: ") == "y":    
+    if input("Do you want a Norwegian passphrase? (y/n): ") == "y":    
         with open("wordlistNOB.txt", "r") as file:
             for line in file:
                 all_passwords.append(line.strip("\n"))
@@ -67,10 +74,3 @@ def passphrase_generator():
         f.write(location + " : " + ready_passphrase)
     print("Password has been vaulted!")
 
-
-if __name__ == "__main__":
-    choice = int(input("What type of password would you like? \n Type 1 for Password \n Type 2 for Passphrase: \n"))
-    if choice == 1:
-        passwordgenerator()
-    elif choice == 2:
-        passphrase_generator()

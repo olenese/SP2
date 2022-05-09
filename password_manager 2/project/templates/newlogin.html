@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+    <h3 class="title">Add a login</h3>
+    <div class="box">
+        <form method="POST" action="/newlogin">
+            <div class="field">
+            <label class="label">Location</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input" type="text" name="location" placeholder="Login location">
+                </div>
+            </div>
+            <div class="field">
+            <label class="label">Username</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input" type="text" name="username" placeholder="Username input">
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Password</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input" name="password" type="password" placeholder="Password input">
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="field">
+            <label class="label">URL</label>
+                <div class="control has-icons-left has-icons-right">
+                    <input class="input" type="text" name="url" placeholder="Web address">
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="field">
+            <label class="label">Note</label>
+                <div class="control">
+                    <textarea class="textarea" name="note" placeholder="Textarea"></textarea>
+                </div>
+            </div>
+            <button class="button is-block is-info is-large is-fullwidth" type="submit">Add login</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+<form method="POST" action="/newlogin">
